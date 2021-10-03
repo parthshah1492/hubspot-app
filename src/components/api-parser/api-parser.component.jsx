@@ -16,20 +16,20 @@ function ApiParser(props) {
         availibility[partner.country] = new Parserhelper();
       }
       partner.availableDates.forEach((date) =>
-        availibility[partner.country].pushToArray(partner.email, date)
+        availibility[partner.country].createEmailList(partner.email, date)
       );
     });
 
     let finalCountries = [];
     Object.keys(availibility).forEach((country) => {
-      var bestDate = availibility[country].getBestDate();
-      if (bestDate) bestDate = bestDate.format("YYYY-MM-DD");
-      let attendees = availibility[country].getAttendeesForDate(bestDate) || [];
+      var availableDate = availibility[country].fetchFinalDate();
+      if (availableDate) availableDate = availableDate.format("YYYY-MM-DD");
+      let attendees = availibility[country].getItemByDate(availableDate) || [];
       finalCountries.push({
         attendeeCount: attendees.length,
         attendees,
         name: country,
-        startDate: bestDate,
+        startDate: availableDate,
       });
     });
 
@@ -65,7 +65,7 @@ function ApiParser(props) {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return <ul>Success</ul>;
+    return <ul>Success for the match</ul>;
   }
 }
 
