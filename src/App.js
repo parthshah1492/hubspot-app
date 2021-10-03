@@ -1,22 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 
+import ApiFetcher from './components/api-fetcher/api-fetcher.component'
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          HubSpot Project
         </p>
-        <a
+        <ApiFetcher/>
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );
