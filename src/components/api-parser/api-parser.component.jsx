@@ -45,7 +45,7 @@ function ApiParser(props) {
       body: JSON.stringify(getPartnerSchadule()),
     };
     fetch(
-      "https://candidate.hubteam.com/candidateTest/v3/problem/result?userKey=c40daa2385f2dab1029ac969fafa",
+      "https://candidate.hubteam.com/candidateTest/v3/problem/result?userKey=56c9ab01aa79fc4d4a46dcc1a339",
       requestOptions
     )
       .then((res) => res.json())
@@ -65,7 +65,12 @@ function ApiParser(props) {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return <ul>Success for the match</ul>;
+    return (
+      <ul>
+        Success on POST Call Response - Please check the Network Tab in
+        Developer tools for the Post Call and Response
+      </ul>
+    );
   }
 }
 
